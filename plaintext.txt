@@ -1,0 +1,19 @@
+├── CMakeLists.txt
+├── tiny_resnet.onnx （预训练装甲板识别模型，需自行放置）
+├── io/
+│   ├── camera_io.cpp   # 相机参数加载、图像采集与畸变校正
+│   ├── camera_io.hpp
+│   ├── serial_io.cpp   # 串口通信（向下位机发送指令）
+│   └── serial_io.hpp
+├── src/
+│   ├── main.cpp        # 项目入口（模块调度、主循环）
+│   ├── ballistic.cpp   # 弹道解算核心（yaw/pitch计算、阻力模型）
+│   └── ballistic.hpp
+├── tasks/
+│   ├── armor_detector.cpp  # 装甲板检测任务（ONNX模型推理、6D位姿解析）
+│   ├── armor_detector.hpp
+│   ├── kalman_filter.cpp   # 卡尔曼滤波任务（装甲板运动状态预测）
+│   └── kalman_filter.hpp
+└── tools/
+    ├── img_tools.hpp   # 图像工具（旋转矩形绘制、尺寸缩放）
+    └── coord_tools.hpp # 坐标工具（相机系→世界系转换、反投影）
